@@ -209,3 +209,27 @@ body {
 .slide-right {
     transform: translateX(100%);
 }
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 20px; /* Уменьшаем отступы */
+    }
+
+    .slider-container {
+        width: 95%; /* Делаем шире на маленьких экранах */
+    }
+
+    .prev-btn,
+    .next-btn {
+        font-size: 18px; /* Уменьшаем размер кнопок */
+        padding: 8px; /* Уменьшаем паддинги */
+    }
+
+    .prev-btn {
+        left: 10px; /* Менее агрессивное расположение */
+    }
+
+    .next-btn {
+        right: 10px; /* Менее агрессивное расположение */
+    }
+}
+
