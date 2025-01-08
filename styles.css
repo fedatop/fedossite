@@ -209,19 +209,20 @@ body {
 .slide-right {
     transform: translateX(100%);
 }
+/* Медиа-запросы для мобильных устройств */
 @media screen and (max-width: 768px) {
     .container {
-        padding: 0 20px; /* Уменьшаем отступы */
+        padding: 0 10px; /* Ещё меньший отступ для маленьких экранов */
     }
 
     .slider-container {
-        width: 95%; /* Делаем шире на маленьких экранах */
+        width: 100%; /* Оставляем 100% для лучшего заполнения экрана */
     }
 
     .prev-btn,
     .next-btn {
-        font-size: 18px; /* Уменьшаем размер кнопок */
-        padding: 8px; /* Уменьшаем паддинги */
+        font-size: 16px; /* Уменьшаем размер кнопок */
+        padding: 6px; /* Уменьшаем паддинги */
     }
 
     .prev-btn {
@@ -233,3 +234,23 @@ body {
     }
 }
 
+/* Дополнительно для очень маленьких экранов */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 5px; /* Минимальные отступы для маленьких экранов */
+    }
+
+    .prev-btn,
+    .next-btn {
+        font-size: 14px; /* Ещё меньше кнопки */
+        padding: 4px; /* Ещё меньше паддингов */
+    }
+
+    .prev-btn {
+        left: 5px; /* Совсем близко к краю */
+    }
+
+    .next-btn {
+        right: 5px; /* Совсем близко к краю */
+    }
+}
