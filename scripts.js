@@ -31,6 +31,7 @@ $(document).ready(function() {
                 currentIndex = (currentIndex - 1 + images.length) % images.length; // Назад
             }
             showImage(currentIndex);
+            event.preventDefault(); // Предотвратить стандартное поведение свайпа
         },
         threshold: 75 // Минимальное расстояние для распознавания свайпа
     });
