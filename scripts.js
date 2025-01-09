@@ -21,4 +21,17 @@ $(document).ready(function() {
         currentIndex = (currentIndex + 1) % images.length; // Бесконечный цикл
         showImage(currentIndex);
     });
+
+    // Обработка свайпов
+    $('.slider-container').swipe({
+        swipe: function(event, direction) {
+            if (direction === 'left') {
+                currentIndex = (currentIndex + 1) % images.length; // Вперед
+            } else if (direction === 'right') {
+                currentIndex = (currentIndex - 1 + images.length) % images.length; // Назад
+            }
+            showImage(currentIndex);
+        },
+        threshold: 75 // Минимальное расстояние для распознавания свайпа
+    });
 });
