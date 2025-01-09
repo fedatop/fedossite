@@ -19,12 +19,15 @@ $(document).ready(function() {
         showImage(currentIndex);
     });
 
-    $('.slider-container').on('swipeleft', () => {
+    const sliderContainer = document.querySelector('.slider-container');
+    const hammer = new Hammer(sliderContainer);
+
+    hammer.on('swipeleft', () => {
         currentIndex = (currentIndex + 1) % images.length;
         showImage(currentIndex);
     });
 
-    $('.slider-container').on('swiperight', () => {
+    hammer.on('swiperight', () => {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         showImage(currentIndex);
     });
