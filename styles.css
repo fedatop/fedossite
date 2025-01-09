@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden; /* Запретить горизонтальную прокрутку */
+    touch-action: pan-y; /* Разрешить только вертикальные свайпы */
+}
+
 body {
     font-family: 'Lato', sans-serif;
     background-color: #ffffff; /* Белый фон для контраста */
