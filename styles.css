@@ -33,14 +33,15 @@ body {
 
 .header nav {
     display: flex; /* Используем flex для расположения элементов */
-    justify-content: center; /* Центрируем элементы */
     flex-wrap: wrap; /* Позволяем перенос элементов на новую строку */
+    justify-content: center; /* Центрируем элементы */
 }
 
 .header nav ul {
     display: flex; /* Используем flex для расположения элементов в строку */
     list-style: none; /* Убираем маркеры перед пунктами */
     width: 100%; /* Занимаем полную ширину */
+    padding: 0; /* Убираем отступы */
 }
 
 .header nav li {
