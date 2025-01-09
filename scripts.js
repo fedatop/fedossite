@@ -3,36 +3,29 @@ $(document).ready(function() {
     let currentIndex = 0;
 
     function showImage(index) {
-        images.hide(); // Скрыть все изображения
-        images.eq(index).show(); // Показать текущее изображение
+        images.hide();
+        images.eq(index).show();
     }
 
-    // Изначально показываем только первое изображение
     showImage(currentIndex);
 
-    // Обработчик для кнопки "Назад"
     $('.prev-btn').on('click', () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length; // Бесконечный цикл
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
         showImage(currentIndex);
     });
 
-    // Обработчик для кнопки "Вперед"
     $('.next-btn').on('click', () => {
-        currentIndex = (currentIndex + 1) % images.length; // Бесконечный цикл
+        currentIndex = (currentIndex + 1) % images.length;
         showImage(currentIndex);
     });
 
-    // Обработка свайпов
-    $('.slider-container').swipe({
-        swipe: function(event, direction) {
-            if (direction === 'left') {
-                currentIndex = (currentIndex + 1) % images.length; // Вперед
-            } else if (direction === 'right') {
-                currentIndex = (currentIndex - 1 + images.length) % images.length; // Назад
-            }
-            showImage(currentIndex);
-            event.preventDefault(); // Предотвратить стандартное поведение свайпа
-        },
-        threshold: 75 // Минимальное расстояние для распознавания свайпа
+    $('.slider-container').on('swipeleft', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    });
+
+    $('.slider-container').on('swiperight', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
     });
 });
