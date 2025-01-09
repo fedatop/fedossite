@@ -17,7 +17,7 @@
                 <li><a href="#about">О нас</a></li>
                 <li><a href="#portfolio">Портфолио</a></li>
                 <li><a href="#contacts">Контакты</a></li>
-                <li><a href="pricing.html">Расценки</a></li> <!-- Новая ячейка для расценок -->
+                <li><a href="pricing.html">Расценки</a></li>
             </ul>
         </nav>
     </header>
@@ -31,7 +31,7 @@
     
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="works-title">Наши работы</h2> <!-- Полупрозрачный фон для заголовка -->
+            <h2 class="works-title">Наши работы</h2>
             <div class="slider-container">
                 <div class="main-image">
                     <img src="images/work1.jpg" alt="Работа 1" class="active">
@@ -52,7 +52,26 @@
             <h2>Контакты</h2>
             <p>Телефон: +7 (123) 456-78-90</p>
             <p>Email: info@wideprint.ru</p>
-            <p>Адрес: г. Москва, ул. Ленина, д. 1</p>
+            <p>Адрес: г. Москва, 1-я стекольная улица 7, стр. 3-а, метро Царицыно</p>
+
+            <!-- Яндекс.Карта -->
+            <div id="map" style="width: 100%; height: 400px;"></div>
+            <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+            <script type="text/javascript">
+                ymaps.ready(init);
+                function init() {
+                    var myMap = new ymaps.Map("map", {
+                        center: [55.610458, 37.659119],
+                        zoom: 15
+                    });
+
+                    var myPlacemark = new ymaps.Placemark([55.610458, 37.659119], {
+                        balloonContent: 'г. Москва, 1-я стекольная улица 7, стр. 3-а'
+                    });
+
+                    myMap.geoObjects.add(myPlacemark);
+                }
+            </script>
         </div>
     </section>
     
@@ -63,6 +82,7 @@
     </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchSwipe/1.6.19/jquery.touchSwipe.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
