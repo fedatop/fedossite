@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расценки | Широкоформатная печать</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Широкоформатная печать</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html#about">О нас</a></li>
+                <li><a href="index.html#portfolio">Портфолио</a></li>
+                <li><a href="index.html#contacts">Контакты</a></li>
+                <li><a href="pricing.html">Расценки</a></li> <!-- Ячейка для расценок -->
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="pricing">
+        <div class="container">
+            <h2>Расценки на услуги</h2>
+            <div class="table-container" id="table-container">
+                <!-- Таблица будет загружена сюда -->
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>© Широкоформатная печать, 2023</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const filePath = 'images/prices.xlsx'; // Путь к файлу Excel
+
+            fetch(filePath)
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const firstSheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[firstSheetName];
+                    const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+                    displayTable(json);
+                })
+                .catch(error => {
+                    console.error('Ошибка при загрузке файла Excel:', error);
+                });
+
+            function displayTable(data) {
+                let tableHTML = '<table><thead><tr>';
+
+                // Заголовки таблицы
+                data[0].forEach(header => {
+                    tableHTML += `<th>${header}</th>`;
+                });
+                tableHTML += '</tr></thead><tbody>';
+
+                // Данные таблицы
+                for (let i = 1; i < data.length; i++) {
+                    tableHTML += '<tr>';
+                    data[i].forEach(cell => {
+                        tableHTML += `<td>${cell}</td>`;
+                    });
+                    tableHTML += '</tr>';
+                }
+                tableHTML += '</tbody></table>';
+
+                // Вставляем таблицу в контейнер
+                document.getElementById('table-container').innerHTML = tableHTML;
+            }
+        });
+    </script>
+</body>
+</html>
