@@ -148,13 +148,12 @@ body {
 .main-image {
     position: relative;
     width: 100%;
-    height: auto;
+    transition: transform 0.5s ease-in-out; /* Плавная анимация */
 }
 
 .main-image img {
     width: 100%;
     display: block;
-    transition: transform 0.5s ease-in-out; /* Плавная анимация */
 }
 
 /* Кнопки навигации */
@@ -177,15 +176,6 @@ body {
 
 .next-btn {
     right: 10px;
-}
-
-/* Эффекты анимации */
-.slide-left {
-    transform: translateX(-100%);
-}
-
-.slide-right {
-    transform: translateX(100%);
 }
 
 /* Медиа-запросы для мобильных устройств */
