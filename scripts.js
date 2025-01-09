@@ -55,6 +55,7 @@ $(document).ready(function() {
             }).appendTo('#reviews-list');
         }
     });
+
     const images = document.querySelectorAll('.hidden-images img');
     let currentIndex = 0;
 
@@ -71,6 +72,10 @@ $(document).ready(function() {
             mainImage.style.transition = ''; // Включаем анимацию обратно
             mainImage.classList.add(direction); // Применяем нужную анимацию
         }, 200); // Задержка перед показом нового изображения
+
+        // Убедитесь, что обе кнопки видимы
+        document.querySelector('.prev-btn').style.display = "block";
+        document.querySelector('.next-btn').style.display = "block";
     }
 
     // Обработчик для кнопки "Назад"
